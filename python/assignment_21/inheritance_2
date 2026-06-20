@@ -1,0 +1,47 @@
+class Product:
+    def __init__(self, product_name, prices):
+        self.__product_name = product_name   # private: name-mangled to _Product__product_name
+        self.__prices       = prices          # private: name-mangled to _Product__prices
+
+    # Getter methods — only way to access private attributes
+    def get_product_name(self):
+        return self.__product_name
+
+    def get_prices(self):
+        return self.__prices
+    
+class InventoryManager(Product):
+    def __init__(self, product_name, prices):
+        super().__init__(product_name, prices)   # initialise base class
+
+    def get_min_price(self):
+        return min(self.get_prices())
+
+    def get_max_price(self):
+        return max(self.get_prices())
+
+    def count_expensive_prices(self):
+        return sum(1 for p in self.get_prices() if p >= 1000)
+
+    def uppercase_name(self):
+        return self.get_product_name().upper()
+
+    def is_palindrome(self):
+        name = self.get_product_name().lower()   # ignore case
+        return name == name[::-1]               # compare with its reverse
+
+
+# ── Input ──────────────────────────────────────────────
+product_name = "Level"
+n            = 5
+prices       = [1200, 999, 4500,800, 1500 ]
+
+# ── Create object and print output ─────────────────────
+inv = InventoryManager(product_name, prices)
+
+print(f"Product: {inv.get_product_name()}")
+print(f"Uppercase: {inv.uppercase_name()}")
+print(f"Minimum Price: {inv.get_min_price()}")
+print(f"Maximum Price: {inv.get_max_price()}")
+print(f"Expensive Count: {inv.count_expensive_prices()}")
+print(f"Palindrome: {inv.is_palindrome()}")

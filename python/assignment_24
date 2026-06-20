@@ -1,0 +1,35 @@
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+    
+    def is_pass(self):
+        return self.marks >= 40
+
+file_content = """Ravi,85
+Priya,42
+Kiran,abc
+Asha,91"""
+
+try:
+    pass_count = 0
+    for line in file_content.strip().split("\n"):
+        line = line.strip()
+        if not line:
+            continue
+        parts = line.split(",")
+        if len(parts) != 2:
+            continue
+        name, marks_str = parts
+        try:
+            marks = int(marks_str)
+            student = Student(name, marks)
+            if student.is_pass():
+                pass_count += 1
+        except ValueError:
+            pass
+
+    print(pass_count)
+
+except FileNotFoundError:
+    print("File Not Found")

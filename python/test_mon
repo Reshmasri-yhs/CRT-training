@@ -1,0 +1,26 @@
+def productivity(activities):
+    count = {}
+
+    for activity in activitites:
+        name,task = activity.split()
+        name = name.lower()
+
+        #check if employee already exists in dict
+        if name in count:
+            count[name] +=1
+        
+        else:
+            #add a new employee
+            count[name] =1
+    
+    employees = list(count.items())
+
+    #sort albhabetically by name
+    def sort_by_name(item):
+        #(john,2)
+        #0 1 
+        return item[0]
+    employees.sort(key = sort_by_name)
+
+#sort by task count
+def sort_by_name

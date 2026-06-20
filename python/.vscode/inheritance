@@ -1,0 +1,67 @@
+#syntax
+class Parent:
+   pass
+
+class Child(Parent):
+   pass
+
+#Basic Example:
+class Animal:
+   def eat(self):
+      print("Animal is eating")
+
+#class class
+class Dog(Animal):
+   pass
+d1 = Dog()
+d1.eat()
+'''
+Dog class dose not contains eat()
+ python searches for eat() in Dog class, if it does not find it there, it looks in the parent class (Animal) and finds it there, so it executes the eat() method from the Animal class.
+ This is the basic idea of inheritance: a child class can use the methods and properties of its parent class, allowing for code reuse and a hierarchical relationship between classes.
+ 
+'''
+#no inheritance
+class Dog:
+   def eat(self):
+      print("eating")
+#with inheritance
+class Animal:
+   def eat(self):
+      print("eating")
+class Dog(Animal):
+   pass
+class cat(Animal):
+   pass
+c1 = cat()
+c1.eat()
+''''''
+#Online course Access System
+class Course:
+    def__init__(self,student_name):
+       self.studnet_name = student_name
+
+    def access_level(self):
+       pass
+
+class FreeCourse(Course):
+   def access_level(self):
+      return "Limited Access"
+   
+class PremiumCourse(Course):
+   def access_level(self):
+      return "Full Access"
+   
+n = int(input())
+
+for _ in range(n):
+   line = input().split()
+   course_type = line[0]
+   student_name = line[1]
+
+   if course_type == "Free":
+      student = FreeCourse(student_name)
+    elif course_type == "Premium":
+      student = PremiumCourse(student_name)
+
+    

@@ -1,0 +1,39 @@
+class WordAnalyzer:
+    def __init__(self):
+        self.words = []
+    
+    def load_words(self):
+        with open("words.txt", "r") as f:
+            for line in f:
+                word = line.strip()
+                if word:  # Ignore empty lines
+                    self.words.append(word)
+    
+    def get_frequency(self, word):
+        return self.words.count(word)
+
+file_content = """apple
+banana
+apple
+
+mango
+apple"""
+
+try:
+    analyzer = WordAnalyzer()
+    
+    for line in file_content.split("\n"):
+        word = line.strip()
+        if word:  
+            analyzer.words.append(word)
+    try:
+        query = "apple"
+        if not isinstance(query, str) or not query.strip():
+            print("Invalid Query")
+        else:
+            print(analyzer.get_frequency(query.strip()))
+    except ValueError:
+        print("Invalid Query")
+
+except FileNotFoundError:
+    print("File Not Found")

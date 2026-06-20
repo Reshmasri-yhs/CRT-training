@@ -1,0 +1,143 @@
+class Student:
+    def __init__(self, name, marks):
+        self.name = name
+        self.marks = marks
+
+class StudentReport(Student):
+    def __init__(self,name,marks):
+        super().__init__(name,marks)
+        
+    def get_average(self):
+        return round(sum(self.marks)/len(self.marks), 1)
+
+    def get_highest(self):
+        return max(self.marks)
+        
+    def count_passed_subjects(self):
+        return sum(1 for m in self.marks if m >= 50)
+
+    def reverse_name(self):
+        return self.name[::-1]
+
+
+name = "Rahul"
+n    =  5
+marks = [67,45,89,90,56]
+
+s = StudentReport(name,marks)
+
+print(f"Name: {s.name}")
+print(f"Reversed Name: {s.reverse_name()}")
+print(f"Average: {s.get_average()}")
+print(f"Highest: {s.get_highest()}")
+print(f"Passed Subjects: {s.count_passed_subjects()}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

@@ -1,0 +1,32 @@
+import os
+import statistics
+
+class FileNotFoundCustomError(Exception):
+    pass
+
+def calculate_average(marks):
+    return float(statistics.mean(marks))
+
+def highest_mark(marks):
+    return max(marks)
+
+def lowest_mark(marks):
+    return min(marks)
+
+def main():
+    filepath = "marks.txt"
+
+    if not os.path.exists(filepath):
+        raise FileNotFoundCustomError(f"Error: '{filepath}' not found.")
+
+    with open(filepath, "r") as f:
+        marks = [int(m) for m in f.read().split()]
+
+    print(f"Average: {calculate_average(marks)}")
+    print(f"Highest: {highest_mark(marks)}")
+    print(f"Lowest:  {lowest_mark(marks)}")
+
+try:
+    main()
+except FileNotFoundCustomError as e:
+    print(e)

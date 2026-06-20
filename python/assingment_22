@@ -1,0 +1,33 @@
+class Vehicle:
+   def __init__(self, number, owner, hours):
+       self.number = number
+       self.owner = owner
+       self.hours = hours
+
+   def rate(self): return 0
+   def bill(self): return self.hours * self.rate()
+
+class Car(Vehicle): rate = lambda self: 30
+class Bike(Vehicle): rate = lambda self: 15
+class Truck(Vehicle): rate = lambda self: 50
+
+#input
+types   = {"Car": Car , "Bike": Bike, "Truck": Truck}
+vehicles = []
+
+n = int(input("Number of vehicles: "))
+for _ in range(n):
+    t, num, owner, hrs = input("Type Number Owner Hours: ").split()
+    vehicles.append(types[t](num, owner, int(hrs)))
+ 
+# --- Output ---
+print("\n--- Bills ---")
+for v in vehicles:
+    print(f"{type(v).__name__:5} | {v.number} | {v.owner} | {v.hours}hrs | Rs.{v.bill()}")
+ 
+print(f"\nTotal Revenue : Rs.{sum(v.bill() for v in vehicles)}")
+top = max(vehicles, key=lambda v: v.bill())
+print(f"Highest Bill  : {top.number} ({top.owner}) -> Rs.{top.bill()}")
+
+
+   

@@ -1,0 +1,61 @@
+text = "apple banana pineapple strawberry banana apple"
+
+words = text.split()
+
+frequency = {}
+for word in words:
+    if word in frequency:
+        frequency[word] += 1
+    else:
+        frequency[word] = 1
+
+print(frequency)
+
+number_of_words = len(frequency)
+print("Number of unique words:", number_of_words)
+
+
+#student 
+employee = {
+    "name": "chari",
+    "age": 37,
+    "position": "mechanical Engineer",
+    "department": "engineering",
+    "salary": 50000
+}
+print(employee)
+
+#group anagram:
+input: ["eat", "tea", "tan", "ate", "nat", "bat"]
+def group_anagrams(words):
+    anagram_dict = {}
+    
+    for word in words:
+        sorted_word = ''.join(sorted(word))
+        
+        if sorted_word in anagram_dict:
+            anagram_dict[sorted_word].append(word)
+        else:
+            anagram_dict[sorted_word] = [word]
+    
+    return list(anagram_dict.values())
+print(group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+
+#problem
+nums = [1, 1, 1, 2, 2, 3]
+k = 2
+
+freq = {}
+
+for num in nums:
+    freq[num] = freq.get(num, 0) + 1
+
+sorted_freq = sorted(freq.items(),)
+
+result = []
+
+for i in range(k):
+    result.append(sorted_freq[i][0])
+
+print(result)
+

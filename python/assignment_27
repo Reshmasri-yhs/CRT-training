@@ -1,0 +1,21 @@
+import threading
+
+def evaluate(name, math, physics, chemistry):
+    total = math + physics + chemistry
+    result = "PASS" if total / 3 >= 40 else "FAIL"
+    print(f"{name} {total} {result}")
+
+n = int(input())
+threads = []
+
+for _ in range(n):
+    data = input().split()
+    name, math, physics, chemistry = data[0], int(data[1]), int(data[2]), int(data[3])
+    t = threading.Thread(target=evaluate, args=(name, math, physics, chemistry))
+    threads.append(t)
+    t.start()
+
+for t in threads:
+    t.join()
+
+print("Result Processing Completed")

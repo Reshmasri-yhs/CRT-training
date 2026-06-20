@@ -1,0 +1,19 @@
+recursion is a programming technic where a func calls itself to solve smaller versions of the same problem. 
+
+function -> calls itself --> again --> again --> until it reaches a base case
+
+def function_name(parameters):
+    """docstring"""
+    statements
+    return statement
+
+    def --> keyword
+    funstion_name --> identifier
+    parammeters --> input
+    return statement --> output
+
+def hello_world(n):
+    if n <= 0:
+        return
+    print("Hello, World!")
+    hello_world(n - 1)

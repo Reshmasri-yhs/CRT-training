@@ -1,0 +1,55 @@
+class SmartLocker:
+    def __init__(self,locker_id,owner_name,pin):
+       self.locker_id = locker_id
+       self.owner_name =  owner_name
+       self.__pin = pin
+       self.__access_count = 0
+
+    def verify_pin(self,entered_pin):
+        return self.__pin == entered_pin
+
+    def access_locker(self,entered_pin):
+        if self.verify_pin(entered_pin):
+            self.__access_count += 1
+            print("Access Grranted")
+        else:
+            print("Invalid PIN")
+
+    def change_pin(self,old_pin,new_pin):
+        if self.verify_pin(old_pin):
+            self.__pin = new_pin
+            print("PIN Changed Successfully")
+        else:
+            print("Incorrect OLd PIn")
+
+    def view_details(self):
+        print(f"Locker ID: {self.locker_id}")
+        print(f"Owner: {self.owner_name}")
+        print(f"AccessCount: {self.__access_count}")
+
+
+locker_id = 101
+owner_name = "Rahul"
+pin = "1234"
+q = 5
+
+operations = [
+    "ACCESS 1234",
+    "ACCESS 0000",
+    "CHANGE 1234 5678",
+    "ACCESS 5678",
+    "DETAILS"
+]
+
+locker = SmartLocker(locker_id,owner_name,pin)
+
+for operation in operations:
+    parts = operation.split()
+    command = parts[0]
+
+    if command == "ACCESS":
+        locker.access_locker(parts[1])
+    elif command == "CHANGE":
+        locker.change_pin(parts[1], parts[2])
+    elif command == "DETAILS":
+        locker.view_details()
