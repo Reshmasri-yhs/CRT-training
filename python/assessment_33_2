@@ -1,0 +1,20 @@
+import re
+
+S = "ab99cd999ef19"
+
+extracted_numbers = re.findall(r'\d+', S)
+
+valid_numbers = []
+
+for num in extracted_numbers:
+    if '9' not in num:
+        valid_numbers.append(int(num))
+
+if len(valid_numbers) > 0:
+    largest = valid_numbers[0]
+    for num in valid_numbers:
+        if num > largest:
+            largest = num
+    print(largest)
+else:
+    print(-1)
