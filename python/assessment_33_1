@@ -1,0 +1,20 @@
+L = 10
+R = 20
+
+def has_unique_digits(n):
+    digits = str(n)
+    unique_digits = set(digits)
+    return len(digits) == len(unique_digits)
+
+count = 0
+valid_ids = []
+
+for n in range(L, R + 1):
+    if has_unique_digits(n):
+        count += 1
+        valid_ids.append(n)
+
+if count > 0:
+    print(count)
+else:
+    print("NoUnique Number")
